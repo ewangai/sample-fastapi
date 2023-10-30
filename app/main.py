@@ -5,7 +5,7 @@ from .database import engine
 from .routers import post, user, auth, vote
 from .config import settings
 
-print(settings)
+#print(settings)
 
 # models.Base.metadata.create_all(bind=engine)
 # replaced by Alembic
