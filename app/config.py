@@ -14,5 +14,4 @@ class Settings(BaseSettings):
          class Config:
                  env_file = ".env"
 
-
 settings = Settings() # create an instance of the Settings class and perform validaiton as defined. then store that in a variable

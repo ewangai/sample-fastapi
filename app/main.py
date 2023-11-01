@@ -16,11 +16,7 @@ app = FastAPI()
 
 
 # can allow specific domains and specific requests such as get only.
-origins = [
-    "http://www.google.com",
-    "http://localhost"
-
-]
+origins = ["*"]
 
 #origins = ["*"]
 
