@@ -29,6 +29,7 @@ app.add_middleware( # runs before our application
 )
 
 
+models.Base.metadata.create_all(bind=engine)
 
 app.include_router(post.router) # First hit of an app
 app.include_router(user.router) # second hit of an app
@@ -38,7 +39,7 @@ app.include_router(vote.router)
 #Path operation or Route
 @app.get("/")                           # Decorator - This turns htis into an path operator to the endpoint is usable e.b. a get method plus path
 async def root():                       # Function - async is optional but required when asynchronous task (takes time) name of the function here is root but it can be anything. root is default
-    return {"message": "Welcome to my API!!!"}
+    return {"message": "Welcome to my API!!!ARE YOU ON DOCKER!!!!"}
 
 
 

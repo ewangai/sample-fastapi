@@ -6,7 +6,7 @@ services:
       - 4000:8000
     environment:
       - DATABASE_HOSTNAME=postgres # resolve to the current network
-      - DATABASE_PORT=5432
+      - DATABASE_PORT=5433
       - DATABASE_PASSWORD=Johanna12.
       - DATABASE_NAME=fastapi
       - DATABASE_USERNAME=postgres
@@ -19,6 +19,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=Johanna12.
       - POSTGRES_DB=fastapi
+      - POSTGRES_HOST_AUTH_METHOD=trust
 
     volumes:
       - postgres-db:/var/lib/postresql/data
