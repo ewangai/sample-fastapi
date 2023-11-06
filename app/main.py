@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI #, status
 from fastapi.middleware.cors import CORSMiddleware
 from . import models
 from .database import engine
@@ -37,9 +37,9 @@ app.include_router(auth.router)
 app.include_router(vote.router)
 
 #Path operation or Route
-@app.get("/")                           # Decorator - This turns htis into an path operator to the endpoint is usable e.b. a get method plus path
+@app.get("/" )                         # Decorator - This turns htis into an path operator to the endpoint is usable e.b. a get method plus path
 async def root():                       # Function - async is optional but required when asynchronous task (takes time) name of the function here is root but it can be anything. root is default
-    return {"message": "Welcome to my API!!!ARE YOU ON DOCKER!!!!"}
+    return {"message": "Hello World"}
 
 
 
