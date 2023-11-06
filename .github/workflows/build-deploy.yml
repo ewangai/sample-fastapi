@@ -4,6 +4,7 @@ on:  [push, pull_request]
 
 jobs:
   job1:
+    name: testing
     env:
       DATABASE_HOSTNAME=localhost
       DATABASE_PORT=5432
@@ -13,6 +14,7 @@ jobs:
       SECRET_KEY=JEDUGVFCHNHGVNDNRIHNVDFVNRHVDIDHCIi8r84jemdndm
       ALGORITHM=HS256
       ACCESS_TOKEN_EXPIRE_MINUTES=60
+      
     runs-on: ubuntu-latest #OS
     steps:
       - name: pulling git repo
