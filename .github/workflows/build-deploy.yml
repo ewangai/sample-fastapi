@@ -6,7 +6,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest #OS
     steps:
-      - name: pulling got repo
+      - name: pulling git repo
         uses: actions/checkout@v2 # from repo
       - name: say hi to me
         run: echo "Hello Eric"
