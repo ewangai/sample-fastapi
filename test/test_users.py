@@ -19,9 +19,9 @@ from app.config import settings
 #    assert res.status_code == 201
 
 def test_create_user(client):
-    res = client.post("/users/", json={"email": "carlosito7@gmail.com", "password": "password123"})
+    res = client.post("/users/", json={"email": "carlosito2@gmail.com", "password": "password123"})
     new_user = schemas.UserOut(**res.json()) # unpack disctionary. This will perform validation 
-    assert new_user.email == "carlosito7@gmail.com" # using model
+    assert new_user.email == "carlosito2@gmail.com" # using model
     assert res.status_code == 201
 
 
@@ -39,11 +39,11 @@ def test_login_user(client, test_user):
 
 
 @pytest.mark.parametrize("email, password, status_code", [
-                         ('carlosito7@gmail.com', 'wrongpassword', 403),
+                         ('carlosito2@gmail.com', 'wrongpassword', 403),
                          ('wrongemail@gmail.com', 'wrongpassword', 403),
                          ('wrongpassword@gmail.com', 'wrongpassword', 403),
                          (None, 'password123', 422),
-                         ('carlosito7@gmail.com', None, 422),
+                         ('carlosito2@gmail.com', None, 422),
                         ] )
 
 def test_incorrect_login(test_user, client, email, password, status_code):

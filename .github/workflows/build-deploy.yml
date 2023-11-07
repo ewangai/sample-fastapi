@@ -11,7 +11,7 @@ jobs:
       DATABASE_HOSTNAME: localhost
       DATABASE_PORT: 5432
       DATABASE_PASSWORD: Johanna12.
-      DATABASE_NAME: fastapi_test
+      DATABASE_NAME: fastapi
       DATABASE_USERNAME: postgres
       SECRET_KEY: JEDUGVFCHNHGVNDNRIHNVDFVNRHVDIDHCIi8r84jemdndm
       ALGORITHM: HS256
