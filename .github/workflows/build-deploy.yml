@@ -73,10 +73,10 @@ jobs:
 
   # CD
 
-   deploy:
-     runs-on: ubuntu-latest
-     needs: [build]
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
 
-     steps: 
-       - name: deploying stuff
-       - run: echo "deploying stuff"
+    steps: 
+      - name: deploying stuff
+      - run: echo "deploying stuff"
