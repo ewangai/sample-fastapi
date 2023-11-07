@@ -33,9 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install python version 3.11
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: "3.11"
       - name: update pip
@@ -46,5 +46,4 @@ jobs:
         run: |
           pip install pytest
           pytest
-
 
