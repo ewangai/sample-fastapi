@@ -31,6 +31,23 @@ def create_access_token (data: dict):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
     return encoded_jwt
+
+
+async def revoke_token(jti: str, db: Session = Depends(database.get_db)):
+    """Revokes a token by adding it to the revoked tokens table."""
+
+    try:
+        revoked_token = models.RevokedToken(jti=jti)
+        db.add(revoked_token)
+        db.commit()
+        return True  # Indicate successful revocation
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to revoke token",
+        ) from e
+
+
 #Minute 7:20
 def verify_access_token(token: str, credentials_exception):
     

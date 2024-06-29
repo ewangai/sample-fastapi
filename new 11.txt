@@ -1,0 +1,97 @@
+BARD
+import React, { useState, useEffect } from 'react';
+
+const LoginForm = () => {
+  const [posts, setPosts] = useState([]);
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  // Define fetchPosts outside handleLogin for better accessibility
+  const fetchPosts = async (accessToken) => {
+    try {
+      const response = await fetch('http://127.0.1.1:10808/posts/1', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const postData = await response.json();
+        setPosts([postData]);
+      } else {
+        console.error('Error fetching post data:', response.status);
+      }
+    } catch (error) {
+      console.error('Error during post data fetch:', error.message);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    const authEndpoint = 'http://127.0.1.1:10808/login';
+
+    try {
+      const response = await fetch(authEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        const accessToken = (await response.json()).access_token;
+        fetchPosts(accessToken);
+        setLoggedIn(true);
+      } else {
+        console.error('Login failed. Invalid credentials or other error.');
+        alert('Login failed. Please check your credentials and try again.');
+      }
+    } catch (error) {
+      console.error('Error during login:', error.message);
+      alert('An error occurred during login. Please try again later.');
+    }
+  };
+
+  useEffect(() => {
+    // Add potential logic here if needed, based on the `[loggedIn]` dependency
+  }, [loggedIn]);
+
+  return (
+    <div className='container'>
+      <div className='panel' style={{ padding: '20px' }}>
+        <h2>Login Form</h2>
+        <form onSubmit={handleLogin}>
+          {/* Form fields and password toggle button */}
+        </form>
+        {loggedIn && (
+          <table className='table table-striped table-bordered table-hover'>
+            {/* Table content here */}
+          </table>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default LoginForm;
+
+
+.Post
